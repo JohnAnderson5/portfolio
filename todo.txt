@@ -1,0 +1,6 @@
+Functionality to Implement
+    Option to add multiple photos
+    Add profile pic to About
+    Optional github link
+    video demo
+    clickable project
