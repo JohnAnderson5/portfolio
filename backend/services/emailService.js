@@ -7,15 +7,14 @@ const OAuth2 = google.auth.OAuth2;
 let verificationTokens = {};
 
 const oauth2Client = new OAuth2(
-  "REMOVED", // Client ID
-  "REMOVED", // Client Secret
+  process.env.GOOGLE_CLIENT_ID, // Client ID
+  process.env.GOOGLE_CLIENT_SECRET, // Client Secret
   "https://developers.google.com/oauthplayground" // Redirect URI
 );
 
 // Set your refresh token from OAuth Playground
 oauth2Client.setCredentials({
-  refresh_token:
-    "1//0456OQYaIlrFWCgYIARAAGAQSNwF-L9IrlYDlAP8ABqqm0ijFvhHvQRwzSKZW1wSjHXt2CRgSL0bYd8amhVFEeTNuXRHsOxYKA3A",
+  refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
 });
 
 async function sendVerificationEmail(req, res) {
@@ -39,12 +38,10 @@ async function sendVerificationEmail(req, res) {
       service: "gmail",
       auth: {
         type: "OAuth2",
-        user: "john.j.anderson5@gmail.com",
-        clientId:
-          "REMOVED",
-        clientSecret: "REMOVED",
-        refreshToken:
-          "1//0456OQYaIlrFWCgYIARAAGAQSNwF-L9IrlYDlAP8ABqqm0ijFvhHvQRwzSKZW1wSjHXt2CRgSL0bYd8amhVFEeTNuXRHsOxYKA3A",
+        user: process.env.GMAIL_USER,
+        clientId: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
         accessToken: accessToken.token,
       },
     });
@@ -87,12 +84,10 @@ async function verifyEmail(req, res) {
       service: "gmail",
       auth: {
         type: "OAuth2",
-        user: "john.j.anderson5@gmail.com",
-        clientId:
-          "REMOVED",
-        clientSecret: "REMOVED",
-        refreshToken:
-          "1//0456OQYaIlrFWCgYIARAAGAQSNwF-L9IrlYDlAP8ABqqm0ijFvhHvQRwzSKZW1wSjHXt2CRgSL0bYd8amhVFEeTNuXRHsOxYKA3A",
+        user: process.env.GMAIL_USER,
+        clientId: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
         accessToken: accessToken.token,
       },
     });
